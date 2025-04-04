@@ -81,14 +81,19 @@ def main():
         temperature = float(input(" Enter temperature (°C): ")) 
         humidity = float(input(" Enter Rel. Humidity (%): ")) 
         if not (0 <= humidity <= 100): 
-            print("Oops, RH (%) must be between 0-100 only...") 
-            continue 
-        # add 3 more weather phenomenon here, such as UV index, etc. 
- 
+            print("Oops, RH (%) must be between 0-100 only...")
+            continue
+        precipitation = float(input(" Enter precipitation (l/sq. m.): ")) 
+        wind_speed = float(input(" Enter wind speed (km/h): ")) 
+        air_pressure = float(input(" Enter air pressure (Pa): "))            
+        
+       
         records[date] = { 
             "temperature": temperature, 
             "humidity": humidity, 
-            # add the key-value pairs here... 
+            "precipitation": precipitation,
+            "wind_speed": wind_speed,
+            "air_pressure": air_pressure,
         }
 
     print("\nSaving to file...") 
@@ -98,14 +103,14 @@ def main():
     print("\n[Weather Information]") 
     for date, data in records.items(): 
         formatted_date = format_date(date) 
+        print(data)
         temperature = data["temperature"] 
         humidity = data["humidity"] 
-        # phenomenon3 = data["phenomenon3"] 
-        # phenomenon4 = data["phenomenon4"] 
-        # phenomenon5 = data["phenomenon5"] 
+        precipitation = data["precipitation"] 
+        wind_speed = data["wind_speed"] 
+        air_pressure = data["air_pressure"] 
          
-        print(f"{formatted_date}\t|  {temperature:.1f}°C\t| {humidity:.1f}%") 
-        # print(f" * {phenomenon3:,.1f} symbol | ...") 
+        print(f"{formatted_date}\t| {temperature:.1f}°C\t| {humidity:.1f}%| {precipitation:,.1f}l/sq. m.| {wind_speed:.1f}km/h| {air_pressure:.1f}Pa")
 
 if __name__ == "__main__": 
     main() 
